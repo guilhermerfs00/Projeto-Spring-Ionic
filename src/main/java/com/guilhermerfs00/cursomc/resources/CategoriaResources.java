@@ -25,3 +25,4 @@ public class CategoriaResources {
 		return ResponseEntity.ok().body(obj);
 	}
 }
+
