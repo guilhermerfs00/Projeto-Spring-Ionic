@@ -12,12 +12,12 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Categoria implements Serializable {
-
-	private static final long serialVersionUID = -963796407803234179L;
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
+	private String nome;
 
 	@ManyToMany(mappedBy="categorias")
 	private List<Produto> produtos = new ArrayList<Produto>();
@@ -33,18 +33,18 @@ public class Categoria implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String nome) {
+		this.nome = nome;
 	}
 
-	public Categoria(Integer id, String name) {
+	public Categoria(Integer id, String nome) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.nome = nome;
 	}
 
 	public List<Produto> getProdutos() {
