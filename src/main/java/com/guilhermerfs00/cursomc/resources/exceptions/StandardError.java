@@ -2,6 +2,8 @@ package com.guilhermerfs00.cursomc.resources.exceptions;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class StandardError implements Serializable{
 	
 	/**
@@ -10,6 +12,7 @@ public class StandardError implements Serializable{
 	private static final long serialVersionUID = -3984301354268759851L;
 	private Integer status;
 	private String msg;
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
 	private Long timestamp;
 	
 	public StandardError(Integer status, String msg, Long timestamp) {
