@@ -23,11 +23,11 @@ public enum EstadoPagamento{
 		return descricao;
 	}
 
-	public static TipoCliente toEnum(Integer cod) {
+	public static EstadoPagamento toEnum(Integer cod) {
 		if (cod == null) {
 			return null;
 		}
-		for (TipoCliente x : TipoCliente.values()) {
+		for (EstadoPagamento x : EstadoPagamento.values()) {
 			if (cod.equals(x.getCod())) {
 				return x;
 			}
