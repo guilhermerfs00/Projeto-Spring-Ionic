@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,21 +22,23 @@ import com.guilhermerfs00.cursomc.domain.enums.TipoCliente;
 @Entity
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	
+	@Column(unique=true)
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
 	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
-	private List <Endereco> endereco = new ArrayList<>();
+	private List<Endereco> enderecos = new ArrayList<>();
 	
 	@ElementCollection
 	@CollectionTable(name="TELEFONE")
-	private Set<String>telefones = new HashSet<>();
+	private Set<String> telefones = new HashSet<>();
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="cliente")
@@ -43,6 +46,7 @@ public class Cliente implements Serializable {
 	
 	public Cliente() {
 	}
+
 	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipo) {
 		super();
 		this.id = id;
@@ -92,12 +96,12 @@ public class Cliente implements Serializable {
 		this.tipo = tipo.getCod();
 	}
 
-	public List<Endereco> getEndereco() {
-		return endereco;
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
-	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	public Set<String> getTelefones() {
@@ -107,9 +111,11 @@ public class Cliente implements Serializable {
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
+
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
+
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
@@ -137,6 +143,6 @@ public class Cliente implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
+	}	
+
 }

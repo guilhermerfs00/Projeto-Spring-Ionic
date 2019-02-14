@@ -15,7 +15,7 @@ import com.guilhermerfs00.cursomc.repositories.ClienteRepository;
 import com.guilhermerfs00.cursomc.resources.exceptions.FieldMessage;
 import com.guilhermerfs00.cursomc.services.validation.utils.BR;
 
-public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
+public class ClienteUpdatealidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
 	
 	@Autowired
 	private ClienteRepository repo;
